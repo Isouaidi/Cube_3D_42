@@ -1,0 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pars.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/14 18:44:53 by isouaidi          #+#    #+#             */
+/*   Updated: 2024/05/16 16:59:04 by isouaidi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cube3d.h"
+
+void	size_fd(t_map *map, char *av)
+{
+	int		fd;
+	char	*line;
+
+	map->size = 0;
+	fd = open(av, O_RDONLY);
+	while ((line = get_next_line_bonus(fd)) != NULL)
+	{
+		map->size++;
+		free(line);
+	}
+	close(fd);
+}
+
+void	ft_strcopy(char *dst, const char *src)
+{
+	while (*src)
+		*dst++ = *src++;
+	*dst = '\0';
+}
+
+void	recup(t_map *map, char *av)
+{
+	int		fd;
+	char	*line;
+	int		i;
+
+	i = 0;
+	map->file = malloc(sizeof(char *) * map->size + 1);
+	if (!map->file)
+		exit(EXIT_FAILURE);
+	fd = open(av, O_RDONLY);
+	line = get_next_line_bonus(fd);
+	while (line)
+	{
+		map->file[i] = ft_strdup(line);
+		i++;
+		free(line);
+		line = get_next_line_bonus(fd);
+	}
+	map->file[i] = NULL;
+	close(fd);
+}
+
+void	check_name_cube(char *av)
+{
+	int	i;
+
+	if (open(av, __O_DIRECTORY) != -1)
+		ft_exit("Error\n Sorry it's a folder");
+	if (open(av, O_RDONLY) == -1)
+		ft_exit("Error\n Check your File");
+	i = ft_strlen(av);
+	i -= 5;
+	if (i < 1)
+		ft_exit("Error\n Check your File");
+	if (ft_strncmp(&av[i], ".cube", 5))
+		ft_exit("Error\n Check your .cube");
+}
