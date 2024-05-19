@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 19:59:07 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/19 22:09:01 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/20 01:19:46 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,27 +63,76 @@ void	check_colors(t_map *map)
 		ft_exit("Error\nCheck your colors");
 	print_char_tab(map->colors);	
 }
-// char	*without_space_count(char *s, t_map *map)
-// {
-// 	int	i;
 
-// 	map->cont_int = 0;
-// 	i = 0;
-// 	while (s[i] == ' ' && s[i] == '\t')
-// 	{
-// 		i++;
-// 		map->cont_int ++;
-// 	}
-// 	return (s + i);
-// }
-// bool	is_f(char *s)
-// {
-// 	if (s[0] == 'F' && (s[1] == ' ' || s[1] == '\t'))
-// 		return (true);
-// 	else
-// 		return (false);
-// }
+int		count_tab(char **tab)
+{
+	int i; 
+	
+	i = 0;
+	while (tab[i] != NULL)
+		i++;
+	printf("%d\n", i);
+	return(i);
+}
+void	check_int_col(t_map *map)
+{
+	int i; 
+	
+	i = 0;
+	printf("t = %s", map->c_col);
+	while (map->c_col[i])
+	{
+		// if((map->c_col[i] >= '0' && map->c_col[i] <= '9' )&& map->c_col[i] == ',') 
+		// 	i++;
+		// else
+		//  	ft_exit(NBR_COLORS);
+		printf("ok = %c\n", map->c_col[i]);
+		i++;
+	}
+	
+}
+void	convert(char **str, int *col)
+{
+	int i;
+	int b;
 
+	b = 0;
+	i = count_tab(str);
+	// if (i != 3)
+		// ft_exit(NBR_COLORS); 
+	i = 0;
+	while (str[i])
+	{ 
+		col[b] = ft_atoi(str[i]);
+		printf("col int = %d\n",col[b]);
+		printf("col char = %s\n",str[i]);
+		b++;
+		i++;
+	}
+}
+void	char_int(t_map *map)
+{
+	char **f;
+	char **c;
+
+	check_int_col(map);
+	f = ft_split(map->f_col, ',');
+	c = ft_split(map->c_col, ',');
+	if (count_tab(f) != 3 || count_tab(c) != 3 )
+		ft_exit(NBR_COLORS);
+	map->int_f = malloc(sizeof(int *) * 3);	
+	map->int_c = malloc(sizeof(int *) * 3);
+	convert(f, map->int_f);
+	convert(c, map->int_c);
+	int i = 0;
+	while (i < 3)
+	{
+		if ((map->int_c[i] < 0 || map->int_c[i] > 255) 
+			|| (map->int_f[i] < 0 || map->int_f[i] > 255))
+			ft_exit(COLORS_ERREUR);
+		i++;
+	}
+}
 void	tab_col(t_map *map, int i, int j, int d)
 {
 	while (map->colors[i])
@@ -92,21 +141,21 @@ void	tab_col(t_map *map, int i, int j, int d)
 		j = 2;
 		if (map->colors[i][j - 2] == 'F')
 		{
-			map->f_col = malloc(sizeof(char) * ft_strlen(map->colors[i]) - 1);
+			map->f_col = malloc(sizeof(char) * ft_strlen(map->colors[i]) - 2);
 			while (map->colors[i][j])
 				map->f_col[d++] = map->colors[i][j++];
 			map->f_col[d] = '\0';	
 		}
 		else if (map->colors[i][j - 2] == 'C')
 		{
-			map->c_col = malloc(sizeof(char) * ft_strlen(map->colors[i]) - 1);
+			map->c_col = malloc(sizeof(char) * ft_strlen(map->colors[i]) - 2);
 			while (map->colors[i][j])
 				map->c_col[d++] = map->colors[i][j++];
 			map->c_col[d] = '\0';	
 		}
 		i++;
 	}
-	printf("c = %s\n", map->c_col);
-	printf("f = %s\n", map->f_col);
+	char_int(map);
+	// printf("c = %s\n", map->c_col);
+	// printf("f = %s\n", map->f_col);
 }
-

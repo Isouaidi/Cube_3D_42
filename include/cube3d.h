@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:31:10 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/19 22:02:20 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/20 00:30:18 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@
 # include "../libft/inc/get_next_line_bonus.h"
 
 # define TOO_MUCH_TEXTURES "Error \nThere is too much textures" 
-# define TOO_MUCH_COLORS "Error \nThere is too much colors" 
+# define TOO_MUCH_COLORS "Error \nThere is too much colors"
+# define COLORS_ERREUR "Error \nColors are between 0 and 255"
+# define NBR_COLORS "Error \n Three numbers are required for colors"
 
 typedef struct s_map
 {
