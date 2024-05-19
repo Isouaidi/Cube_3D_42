@@ -1,6 +1,7 @@
 SRCS =  main.c\
 		$(addprefix parsing/,pars.c\
 							recup_text.c\
+							recup_colors.c\
 							pars_utils.c)\
 
 

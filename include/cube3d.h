@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:31:10 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/16 17:01:16 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/19 22:02:20 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "../libft/inc/get_next_line_bonus.h"
 
 # define TOO_MUCH_TEXTURES "Error \nThere is too much textures" 
+# define TOO_MUCH_COLORS "Error \nThere is too much colors" 
 
 typedef struct s_map
 {
@@ -32,6 +33,11 @@ typedef struct s_map
 	int		size;
 	char	**text;
 	char	**colors;
+	char	*f_col;
+	char	*c_col;
+	int		cont_int;
+	int		*int_f;
+	int		*int_c;
 	int		no;
 	int		so;
 	int		w;
@@ -52,5 +58,8 @@ void	inti_var(t_map *map);
 void	print_char_tab(char **tab);
 void	check_texture(t_map *map);
 void	ft_exit(char *str);
+void	check_colors(t_map *map);
+char	*without_space(char *s);
+void	tab_col(t_map *map, int i, int j, int d);
 
 #endif
