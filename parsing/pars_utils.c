@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:01:12 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/16 16:59:21 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/20 17:13:38 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	tablen(char **tab)
 		i++;
 	return (i);
 }
-void inti_var(t_map *map)
+
+void	inti_var(t_map *map)
 {
 	map->no = 0;
 	map->so = 0;

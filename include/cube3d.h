@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:31:10 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/20 00:30:18 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/20 19:38:13 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 # define TOO_MUCH_TEXTURES "Error \nThere is too much textures" 
 # define TOO_MUCH_COLORS "Error \nThere is too much colors"
-# define COLORS_ERREUR "Error \nColors are between 0 and 255"
+# define COLORS_ERREUR "Error \nColors take integer between 0 and 255"
 # define NBR_COLORS "Error \n Three numbers are required for colors"
 
 typedef struct s_map
@@ -62,6 +62,10 @@ void	check_texture(t_map *map);
 void	ft_exit(char *str);
 void	check_colors(t_map *map);
 char	*without_space(char *s);
-void	tab_col(t_map *map, int i, int j, int d);
+void	tab_col(t_map *map, int i, int j);
+void	convert(char **str, int *col);
+void	check_int_col(t_map *map);
+
+int		count_tab(char **tab);
 
 #endif

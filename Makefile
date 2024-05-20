@@ -2,11 +2,14 @@ SRCS =  main.c\
 		$(addprefix parsing/,pars.c\
 							recup_text.c\
 							recup_colors.c\
+							recup_col2.c\
 							pars_utils.c)\
+		$(addprefix utils/,utils.c)\
+					
 
 
 OBJS = $(SRCS:.c=.o)
-NAME = cube3D
+NAME = cub3D
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Iinclude -O3 -g3 #-fsanitize=address
 MINILIBX_DIR = minilibx-linux
