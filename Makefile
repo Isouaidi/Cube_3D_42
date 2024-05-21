@@ -3,6 +3,7 @@ SRCS =  main.c\
 							recup_text.c\
 							recup_colors.c\
 							recup_col2.c\
+							recup_map.c\
 							pars_utils.c)\
 		$(addprefix utils/,utils.c)\
 					

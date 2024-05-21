@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:31:10 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/20 19:38:13 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/21 19:30:40 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_map
 	int		size;
 	char	**text;
 	char	**colors;
+	char	**map;
 	char	*f_col;
 	char	*c_col;
 	int		cont_int;
@@ -67,5 +68,7 @@ void	convert(char **str, int *col);
 void	check_int_col(t_map *map);
 
 int		count_tab(char **tab);
+void	recup_map(t_map *map);
+
 
 #endif
