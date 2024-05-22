@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 16:52:41 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/22 20:07:16 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/22 21:55:05 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void check_all_map(t_map *map, int n, int w, int s)
 {
 	int i;
 	int e;
+	int j;
 
 	e = 0;
 	i = 0;
@@ -102,5 +103,19 @@ void check_all_map(t_map *map, int n, int w, int s)
 		i++;
 	}
 	if (e+n+w+s != 1)
-		ft_exit("Error\n Cube take 1 player");
+		ft_exit("Error\nCube take 1 player");
+	i = 0;
+	while (map->map[i])
+	{
+		j = 0;
+		while (map->map[i][j])
+		{
+			if (map->map[i][j] == '0' && (map->map[i][j + 1] == ' ' 
+				|| map->map[i][j - 1] == ' ' || map->map[i + 1][j] == ' ' 
+				|| map->map[i - 1][j] == ' ' ))
+				ft_exit("Error\nThe Map must be closed");
+			j++;
+		}
+		i++;
+	}
 }
