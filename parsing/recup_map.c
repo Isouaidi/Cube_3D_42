@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:14:38 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/21 19:51:56 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/22 19:58:28 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 bool	is_map(char *s)
 {
 	int	i;
-	int	f;
+	int j;
 
-	f = 0;
+	j = 0;
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == '1' || s[i] == ' ' || s[i] == '\n')
-			f++;
-		else
-			return (false);
+		if (s[i] == '1')
+			j = 1;
+		i++;
 	}
-	return (true);
+	// printf("val = %d\n", i);
+	if (s[0] != 'F' && s[0] != 'C' && (s[0] == '1' || j != 0))
+		return(true);
+	else
+		return(false);
 }
 
 int	countmap(char **tab)
@@ -46,7 +49,6 @@ int	countmap(char **tab)
 			count++;
 		i++;
 	}
-	printf("%d", count);
 	return (count);
 }
 
@@ -58,21 +60,23 @@ void	recup_map(t_map *map)
 	int	count;
 
 	count = countmap(map->file);
-	map->map = malloc(sizeof(char *) * count + 1);
+	map->map = malloc(sizeof(char *) * count + 3);
 	f = 0;
 	i = 0;
 	j = 0;
+	map->map[j++] = modif_ft_strdup(" ");
 	while (map->file[i])
 	{
 		if (is_map(map->file[i]) == true && f == 0)
 		{
-			map->map[j] = ft_strdup(map->file[i]);
-			j++;
+			map->map[j] = modif_ft_strdup(map->file[i]);
 			f = 1;
+			j++;
 		}
-		if (f == 1)
-			map->map[j++] = ft_strdup(map->file[i]);
+		else if (f == 1)
+			map->map[j++] = modif_ft_strdup(map->file[i]);
 		i++;
 	}
+	map->map[j++] = modif_ft_strdup(" ");
 	map->map[j] = NULL;
 }

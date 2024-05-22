@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:31:10 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/21 19:30:40 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/22 19:52:57 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_map
 	int		*int_c;
 	int		no;
 	int		so;
+	int		es;
+	int		we;
 	int		w;
 	int		e;
 	int		f;
@@ -66,9 +68,11 @@ char	*without_space(char *s);
 void	tab_col(t_map *map, int i, int j);
 void	convert(char **str, int *col);
 void	check_int_col(t_map *map);
-
 int		count_tab(char **tab);
 void	recup_map(t_map *map);
+void	first_sapce(t_map *nmap);
+char	*modif_ft_strdup(const char *src);
+void	check_all_map(t_map *map, int n, int w, int s);
 
 
 #endif

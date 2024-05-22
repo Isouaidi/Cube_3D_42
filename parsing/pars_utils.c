@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:01:12 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/20 17:13:38 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/22 18:43:49 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	print_char_tab(char **tab)
 	i = 0;
 	while (tab[i])
 	{
-		printf("%s", tab[i]);
+		printf("%s\n", tab[i]);
 		i++;
 	}
 	return ;

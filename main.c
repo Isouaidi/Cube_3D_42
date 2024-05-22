@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 18:46:52 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/21 19:38:17 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/22 19:52:46 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ int	main(int ac, char **av)
 		check_colors(&map);
 		tab_col(&map, 0, 0);
 		recup_map(&map);
+		first_sapce(&map);
+		check_all_map(&map,0,0,0);
 	}
 }

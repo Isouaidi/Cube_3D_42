@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:49:38 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/21 19:32:52 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/22 18:46:45 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	check_texture(t_map *map)
 		{
 			if (count == 4)
 				ft_exit(TOO_MUCH_TEXTURES);
-			map->text[j] = ft_strdup(map->file[i]);
+			map->text[j] = modif_ft_strdup(map->file[i]);
 			j++;
 			count++;
 		}
