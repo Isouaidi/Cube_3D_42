@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:49:38 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/22 18:46:45 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/23 20:32:50 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,13 @@ void	check_texture(t_map *map)
 	int	count;
 
 	map->text = malloc(sizeof(char *) * 5);
+	if (!(map->text))
+		ft_exit("file");
 	init_map(map);
 	i = 0;
 	j = 0;
 	count = 0;
+	// print_char_tab(map->file);
 	while (map->file[i])
 	{
 		if (is_texture(map->file[i], map) == true)

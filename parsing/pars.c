@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 18:44:53 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/22 21:44:08 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:50:02 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ void	size_fd(t_map *map, char *av)
 
 	map->size = 0;
 	fd = open(av, O_RDONLY);
-	while ((line = get_next_line_bonus(fd)) != NULL)
+	line = get_next_line_bonus(fd);
+	while (line )
 	{
 		map->size++;
 		free(line);
+		line = get_next_line_bonus(fd);
 	}
 	close(fd);
 }
@@ -41,15 +43,16 @@ void	recup(t_map *map, char *av)
 	int		i;
 
 	i = 0;
-	map->file = malloc(sizeof(char *) * map->size + 1);
+	if (map->size < 1)
+		ft_exit("Erros\nMap is Null");
+	map->file = malloc(sizeof(char *) * (map->size * 2));
 	if (!map->file)
-		exit(EXIT_FAILURE);
+		ft_exit("Error\nEmpty File");
 	fd = open(av, O_RDONLY);
 	line = get_next_line_bonus(fd);
 	while (line)
 	{
-		map->file[i] = ft_strdup(line);
-		i++;
+		map->file[i++] = ft_strdup(line);
 		free(line);
 		line = get_next_line_bonus(fd);
 	}

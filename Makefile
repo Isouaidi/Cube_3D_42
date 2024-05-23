@@ -6,14 +6,15 @@ SRCS =  main.c\
 							recup_map.c\
 							check_map.c\
 							pars_utils.c)\
-		$(addprefix utils/,utils.c)\
+		$(addprefix utils/, parsing_utils.c\
+							parsing_utils2.c)\
 					
 
 
 OBJS = $(SRCS:.c=.o)
 NAME = cub3D
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinclude -O3 -g3 #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Iinclude -O3 -g3 -fsanitize=leak
 MINILIBX_DIR = minilibx-linux
 MINILIBX_LIB = $(MINILIBX_DIR)/libmlx_Linux.a
 RM = rm -rf

@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:14:38 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/22 19:58:28 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/23 20:37:44 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,27 @@ void	recup_map(t_map *map)
 	int	count;
 
 	count = countmap(map->file);
-	map->map = malloc(sizeof(char *) * count + 3);
+	if(count < 1)
+		ft_exit("Error\nMap is NULL");
+	map->map = malloc(sizeof(char *) * count + 2);
+	if (!map->map)
+		ft_exit("Error\nMap is NULL");
 	f = 0;
 	i = 0;
 	j = 0;
-	map->map[j++] = modif_ft_strdup(" ");
+	map->map[j++] = ft_strdup(" ");
 	while (map->file[i])
 	{
 		if (is_map(map->file[i]) == true && f == 0)
 		{
-			map->map[j] = modif_ft_strdup(map->file[i]);
+			map->map[j++] = modif_ft_strdup(map->file[i]);
 			f = 1;
-			j++;
 		}
 		else if (f == 1)
 			map->map[j++] = modif_ft_strdup(map->file[i]);
 		i++;
 	}
-	map->map[j++] = modif_ft_strdup(" ");
+	map->map[j++] = ft_strdup(" ");
 	map->map[j] = NULL;
+	print_char_tab(map->map);
 }

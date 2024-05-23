@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:31:10 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/22 19:52:57 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:44:50 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,16 @@ void	recup_map(t_map *map);
 void	first_sapce(t_map *nmap);
 char	*modif_ft_strdup(const char *src);
 void	check_all_map(t_map *map, int n, int w, int s);
-
+void	null_map(char **tab);
+bool	count_colors(t_map *map);
+bool	is_map(char *s);
+bool	is_texture(char *s, t_map *map);
+bool	count_text(t_map *map);
+void	check_char_aut(t_map *map);
+void	apl_pars(t_map *map, char **av);
+void	free_all(t_map *map);
+void	free_tab(char **tab);
+char	*free_strjoins2(char *s1, char *s2);
+char	*free_strjoins1(char *s1, char *s2);
 
 #endif

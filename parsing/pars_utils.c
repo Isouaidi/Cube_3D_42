@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:01:12 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/22 18:43:49 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:35:25 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,4 @@ void	print_char_tab(char **tab)
 	}
 	return ;
 }
+

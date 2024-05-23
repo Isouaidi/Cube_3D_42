@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 16:52:41 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/22 21:55:05 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/23 20:24:23 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,26 @@ void	first_sapce(t_map *map)
 	size_t count;
 
 	i = 0;
+	if (map->map == NULL)
+		ft_exit("Error\nMap is NULL");
 	while (map->map[i])
 	{
-		map->map[i] = ft_strjoin(" ", map->map[i]);
-		map->map[i] = ft_strjoin(map->map[i], " ");
+		map->map[i] = free_strjoins2(" ", map->map[i]);
+		map->map[i] = free_strjoins1(map->map[i], " ");
 		i++;
 	}
 	last_space(map, &count);
-	// printf("2  = %ld\n", (count));
 	i = 0;
 	while (map->map[i])
 	{
 		j = ft_strlen(map->map[i]);
 		while (j <= (int)count)
 		{
-			map->map[i] = ft_strjoin(map->map[i], " ");
+			map->map[i] = free_strjoins1(map->map[i], " ");
 			j++;
 		}
 		i++;
 	}
-	print_char_tab(map->map);
 }
 int	check_char(char *str, int *n, int *w, int *s)
 {
@@ -98,22 +98,26 @@ void check_all_map(t_map *map, int n, int w, int s)
 	e = 0;
 	i = 0;
 	while (map->map[i])
-	{
-		e += check_char(map->map[i], &n,&w,&s);
-		i++;
-	}
+		e += check_char(map->map[i++], &n,&w,&s);
 	if (e+n+w+s != 1)
+	{
+		free_tab(map->map);
 		ft_exit("Error\nCube take 1 player");
+	}
 	i = 0;
 	while (map->map[i])
 	{
 		j = 0;
 		while (map->map[i][j])
 		{
-			if (map->map[i][j] == '0' && (map->map[i][j + 1] == ' ' 
+			if ((map->map[i][j] == '0' || map->map[i][j] == 'N' || 
+			map->map[i][j] == 'W' || map->map[i][j] == 'E'  ) && (map->map[i][j + 1] == ' ' 
 				|| map->map[i][j - 1] == ' ' || map->map[i + 1][j] == ' ' 
 				|| map->map[i - 1][j] == ' ' ))
-				ft_exit("Error\nThe Map must be closed");
+				{
+					free_tab(map->map);
+					ft_exit("Error\nThe Map must be closed");
+				}
 			j++;
 		}
 		i++;
