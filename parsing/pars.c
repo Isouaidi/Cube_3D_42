@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 18:44:53 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/24 15:58:53 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:38:32 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ void	check_name_cube(char *av)
 	i -= 5;
 	if (i < 1)
 		ft_exit("Error\n Check your File");
-	if (ft_strncmp(&av[i], ".cube", 5))
-		ft_exit("Error\n Check your .cube");
+	if (ft_strncmp(&av[i], ".cub", 5))
+		ft_exit("Error\n Check your .cub");
 }
