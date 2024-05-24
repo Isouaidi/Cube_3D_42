@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:01:12 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/23 18:35:25 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/24 15:58:41 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,14 @@ void	print_char_tab(char **tab)
 	return ;
 }
 
+void	free_all(t_map *map)
+{
+	free(map->int_c);
+	free(map->int_f);
+	free_tab(map->file);
+	free_tab(map->text);
+	free_tab(map->map);
+	free_tab(map->colors);
+	free(map->c_col);
+	free(map->f_col);
+}

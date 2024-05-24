@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 18:44:53 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/23 19:50:02 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/24 15:58:53 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	size_fd(t_map *map, char *av)
 	map->size = 0;
 	fd = open(av, O_RDONLY);
 	line = get_next_line_bonus(fd);
-	while (line )
+	while (line)
 	{
 		map->size++;
 		free(line);

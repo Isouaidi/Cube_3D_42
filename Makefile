@@ -14,7 +14,7 @@ SRCS =  main.c\
 OBJS = $(SRCS:.c=.o)
 NAME = cub3D
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinclude -O3 -g3 -fsanitize=leak
+CFLAGS = -Wall -Wextra -Werror -Iinclude -O3 -g3 #-fsanitize=leak
 MINILIBX_DIR = minilibx-linux
 MINILIBX_LIB = $(MINILIBX_DIR)/libmlx_Linux.a
 RM = rm -rf

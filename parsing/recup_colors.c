@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 19:59:07 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/23 20:36:46 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:00:41 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,13 @@ bool	count_colors(t_map *map)
 		return (false);
 }
 
-void	check_colors(t_map *map)
+void	check_colors(t_map *map, int i, int j)
 {
-	int	i;
-	int	j;
 	int	count;
 
 	map->colors = malloc(sizeof(char *) * 5);
 	if (!(map->colors))
 		ft_exit("colors");
-	i = 0;
-	j = 0;
 	count = 0;
 	while (map->file[i])
 	{
@@ -64,7 +60,6 @@ void	check_colors(t_map *map)
 	map->colors[j] = NULL;
 	if (count_colors(map) == false)
 		ft_exit("Error\nCheck your colors");
-	// print_char_tab(map->colors);
 }
 
 void	check_int_col(t_map *map)

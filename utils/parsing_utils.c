@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:01:50 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/23 20:10:44 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:01:52 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	count_tab(char **tab)
 		i++;
 	return (i);
 }
+
 char	*modif_ft_strdup(const char *src)
 {
 	char	*dest;
@@ -36,7 +37,7 @@ char	*modif_ft_strdup(const char *src)
 		{
 			dest[i] = '\0';
 			i++;
-			return(dest);
+			return (dest);
 		}
 		dest[i] = src[i];
 		i++;
@@ -44,15 +45,17 @@ char	*modif_ft_strdup(const char *src)
 	dest[i] = '\0';
 	return (dest);
 }
-void free_tab(char **tab)
+
+void	free_tab(char **tab)
 {
-	int i;
+	int	i;
 
 	i = -1;
-	while(tab[++i])
+	while (tab[++i])
 		free(tab[i]);
 	free(tab);
 }
+
 char	*free_strjoins1(char *s1, char *s2)
 {
 	int		i;
@@ -81,6 +84,7 @@ char	*free_strjoins1(char *s1, char *s2)
 	free(s1);
 	return (result);
 }
+
 char	*free_strjoins2(char *s1, char *s2)
 {
 	int		i;
@@ -91,7 +95,7 @@ char	*free_strjoins2(char *s1, char *s2)
 	c = 0;
 	if (!s1 || !s2)
 		return (0);
-	result = malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
+	result = malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 2);
 	if (!result)
 		return (0);
 	while (s1[i])
@@ -106,19 +110,6 @@ char	*free_strjoins2(char *s1, char *s2)
 		c++;
 	}
 	result[i] = '\0';
-	if (s2 != NULL)
-		free(s2);
+	free(s2);
 	return (result);
 }
-void free_all(t_map *map)
-{
-	free(map->int_c);
-	free(map->int_f);
-	free_tab(map->file);
-	free_tab(map->text);
-	free_tab(map->map);
-	free_tab(map->colors);
-	free(map->c_col);
-	free(map->f_col);
-}
-

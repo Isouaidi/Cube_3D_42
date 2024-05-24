@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:14:38 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/23 20:37:44 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:01:12 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 bool	is_map(char *s)
 {
 	int	i;
-	int j;
+	int	j;
 
 	j = 0;
 	i = 0;
@@ -25,11 +25,10 @@ bool	is_map(char *s)
 			j = 1;
 		i++;
 	}
-	// printf("val = %d\n", i);
 	if (s[0] != 'F' && s[0] != 'C' && (s[0] == '1' || j != 0))
-		return(true);
+		return (true);
 	else
-		return(false);
+		return (false);
 }
 
 int	countmap(char **tab)
@@ -52,23 +51,17 @@ int	countmap(char **tab)
 	return (count);
 }
 
-void	recup_map(t_map *map)
+void	recup_map(t_map *map, int i, int j, int f)
 {
-	int	i;
-	int	j;
-	int	f;
 	int	count;
 
 	count = countmap(map->file);
-	if(count < 1)
+	if (count < 1)
 		ft_exit("Error\nMap is NULL");
-	map->map = malloc(sizeof(char *) * count + 2);
+	map->map = malloc(sizeof(char *) * count * 3);
 	if (!map->map)
 		ft_exit("Error\nMap is NULL");
-	f = 0;
-	i = 0;
-	j = 0;
-	map->map[j++] = ft_strdup(" ");
+	map->map[j++] = modif_ft_strdup(" ");
 	while (map->file[i])
 	{
 		if (is_map(map->file[i]) == true && f == 0)
@@ -80,7 +73,6 @@ void	recup_map(t_map *map)
 			map->map[j++] = modif_ft_strdup(map->file[i]);
 		i++;
 	}
-	map->map[j++] = ft_strdup(" ");
+	map->map[j++] = modif_ft_strdup(" ");
 	map->map[j] = NULL;
-	print_char_tab(map->map);
 }

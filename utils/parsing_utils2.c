@@ -6,24 +6,24 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:53:33 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/23 20:26:52 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:00:19 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-bool is_space(char *str)
+bool	is_space(char *str)
 {
-	int i; 
-	
+	int	i;
+
 	i = 0;
 	while (str[i])
 	{
 		if (!(str[i] == ' ' || str[i] == '\n'))
-			return(false);
-		i++;	
+			return (false);
+		i++;
 	}
-	return(true);
+	return (true);
 }
 
 bool	is_colors2(char *s)
@@ -39,6 +39,7 @@ bool	is_colors2(char *s)
 	else
 		return (false);
 }
+
 bool	is_texture2(char *s)
 {
 	if (s[0] == 'N' && s[1] == 'O' && s[2] == ' ')
@@ -60,34 +61,36 @@ bool	is_texture2(char *s)
 	else
 		return (false);
 }
+
 void	check_char_aut(t_map *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map->file[i])
 	{
-		if((is_colors2(map->file[i]) == false) 
-			&& (is_space(map->file[i]) == false) 
-			&& (is_map(map->file[i]) == false) 
-				&& (is_texture2(map->file[i]) == false))
-			{
-				free_tab(map->map);
-				ft_exit("Error\nCharacter incorrect");
-			}
+		if ((is_colors2(map->file[i]) == false)
+			&& (is_space(map->file[i]) == false)
+			&& (is_map(map->file[i]) == false)
+			&& (is_texture2(map->file[i]) == false))
+		{
+			free_tab(map->map);
+			ft_exit("Error\nCharacter incorrect");
+		}
 		i++;
 	}
 }
+
 void	apl_pars(t_map *map, char **av)
 {
 	check_name_cube(av[1]);
 	size_fd(map, av[1]);
 	recup(map, av[1]);
 	check_texture(map);
-	check_colors(map);
+	check_colors(map, 0, 0);
 	tab_col(map, 0, 0);
-	recup_map(map);
+	recup_map(map, 0, 0, 0);
 	first_sapce(map);
-	check_all_map(map,0,0,0);
+	check_all_map(map, 0, 0, 0);
 	check_char_aut(map);
 }
