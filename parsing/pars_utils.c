@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:01:12 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/24 15:58:41 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/06/18 15:23:10 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void	free_all(t_map *map)
 	free_tab(map->text);
 	free_tab(map->map);
 	free_tab(map->colors);
+	free(map->_ea);
+	free(map->_no);
+	free(map->_we);
+	free(map->_so);
 	free(map->c_col);
 	free(map->f_col);
 }
