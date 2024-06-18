@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:57:07 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/23 20:16:23 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/06/18 14:52:38 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	char_int(t_map *map)
 void	cpy_color(char **tab, char *cpy, int *i, int *j)
 {
 	int	d;
-	int f;
+	int	f;
 
 	f = 0;
 	d = 0;

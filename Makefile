@@ -1,6 +1,7 @@
 SRCS =  main.c\
 		$(addprefix parsing/,pars.c\
 							recup_text.c\
+							recup_text2.c\
 							recup_colors.c\
 							recup_col2.c\
 							recup_map.c\
@@ -12,6 +13,7 @@ SRCS =  main.c\
 
 
 OBJS = $(SRCS:.c=.o)
+
 NAME = cub3D
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Iinclude -O3 -g3 #-fsanitize=leak

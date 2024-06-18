@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:31:10 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/24 16:00:11 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/06/18 14:10:28 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ typedef struct s_map
 	char	**file;
 	int		size;
 	char	**text;
+	char	*_no;
+	char	*_so;
+	char	*_ea;
+	char	*_we;
 	char	**colors;
 	char	**map;
 	char	*f_col;
@@ -85,5 +89,6 @@ void	free_all(t_map *map);
 void	free_tab(char **tab);
 char	*free_strjoins2(char *s1, char *s2);
 char	*free_strjoins1(char *s1, char *s2);
+void	rctext(t_map *map);
 
 #endif

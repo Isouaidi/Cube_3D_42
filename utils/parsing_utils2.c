@@ -6,7 +6,7 @@
 /*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:53:33 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/24 16:00:19 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/06/18 14:11:28 by isouaidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,5 @@ void	apl_pars(t_map *map, char **av)
 	first_sapce(map);
 	check_all_map(map, 0, 0, 0);
 	check_char_aut(map);
+	rctext(map);
 }
