@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsafi <bsafi@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 18:44:53 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/06/18 13:15:55 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/06/18 15:36:58 by bsafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ void	check_name_cube(char *av)
 	i -= 4;
 	if (i < 1)
 		ft_exit("Error\n Check your File");
-	if ((ft_strncmp(&av[i], ".cub", 4) != 0))
+	if ((ft_strncmp(&av[i], ".cub", 4)) != 0)
 		ft_exit("Error\n Check your .cub");
 }

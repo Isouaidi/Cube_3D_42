@@ -9,15 +9,21 @@ SRCS =  main.c\
 							pars_utils.c)\
 		$(addprefix utils/, parsing_utils.c\
 							parsing_utils2.c)\
+		$(addprefix raycasting/,raycasting.c\
+								mouv.c\
+								mouv2.c\
+								draw.c\
+								draw2.c\
+								raycastutils.c\
+								raycastutils2.c)\
 					
 
 
 OBJS = $(SRCS:.c=.o)
-
 NAME = cub3D
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinclude -O3 -g3 #-fsanitize=leak
-MINILIBX_DIR = minilibx-linux
+CFLAGS = -Wall -Wextra  -Werror -I$(MLX_DIR) -Iinclude -lm -g #-fsanitize=address
+MINILIBX_DIR = ./minilibx-linux/
 MINILIBX_LIB = $(MINILIBX_DIR)/libmlx_Linux.a
 RM = rm -rf
 LIBFT = ./libft
@@ -39,7 +45,7 @@ GREEN1 =\033[38;5;46m
 GREEN = \033[38;5;85m
 
 FICH_COUNT = 0
-NBR_TOT_FICHIER = 9
+NBR_TOT_FICHIER = 18
 NBR_COMPILER = ${shell expr 100 \* ${FICH_COUNT} / ${NBR_TOT_FICHIER}}
 BAR =  ${shell expr 23 \* ${FICH_COUNT} / ${NBR_TOT_FICHIER}}
 
@@ -47,7 +53,7 @@ BAR =  ${shell expr 23 \* ${FICH_COUNT} / ${NBR_TOT_FICHIER}}
 
 ${MAIN_PATH}%.o:%.c 
 	@${eval FICH_COUNT = ${shell expr ${FICH_COUNT} + 1}}
-	@${CC} ${CFLAGS} -Lmlx_linux -lmlx_Linux -L$(MINILIBX_DIR) -Imlx_linux -lXext -lX11 -lm -lz -c -I . $< -o ${<:.c=.o}
+	@${CC} ${CFLAGS} -c -I . $< -o ${<:.c=.o} -Iinclude -I./minilibx-linux/
 	@echo ""
 	@echo " ${GRAS}${RED1}-> COMPILATION EN COURS${RESET}${GRAS}${YEL}[CUBE_3D]${RESET}"
 	@printf " ${RED1}${GRAS}[${YEL}%-23.${BAR}s${RED1}] [%d/%d (%d%%)]${RESET}" "-----------------------" ${FICH_COUNT} ${NBR_TOT_FICHIER} ${NBR_COMPILER}
@@ -58,7 +64,7 @@ all : ${NAME}
 
 ${NAME}: ${OBJS}
 	@${MAKE} --silent -C ${LIBFT}/
-	@${CC} ${CFLAGS} ${OBJS} ${LIBFT}/libft.a -o ${NAME} ${FLAGSMLX}
+	@${CC} ${CFLAGS} ${OBJS} -L${LIBFT} -lft -o ${NAME} -L${MINILIBX_DIR} -lmlx_Linux -lXext -lX11 -lm -lz
 	@echo "\n\n\n ${GRAS}${RED1}CUBE_3D EST COMPILÉ 👏${RESET}\n"
 	
 clean:

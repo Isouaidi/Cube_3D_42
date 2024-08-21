@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsafi <bsafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:31:10 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/06/18 14:10:28 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/07/01 16:00:50 by bsafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <limits.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <math.h>
+# include "mlx.h"
 
 # include "../libft/inc/libft.h"
 # include "../libft/inc/ft_printf.h"
@@ -28,6 +30,65 @@
 # define TOO_MUCH_COLORS "Error \nThere is too much colors"
 # define COLORS_ERREUR "Error \nColors take integer between 0 and 255"
 # define NBR_COLORS "Error \n Three numbers are required for colors"
+# define PLAYER_SPEED 0.09
+# define ROT_SPEED 0.02
+# define PI 3.14159265359
+# define WIDTH 1000
+# define HEIGHT 600
+
+
+typedef struct s_img {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+
+    int		width;
+	int		height;
+}       t_img;
+
+typedef struct s_stru
+{
+	double	cameraX;
+	double	raydX;
+	double	raydY;
+
+	double sidedX;
+    double sidedY;
+
+	double deltadX;
+    double deltadY;
+    double perpwalld;
+	double lineheight;
+
+	int	hit;
+
+
+	void	*ground;
+	void	*wall;
+	double	time;
+	double	movespeed;
+	double	rotspeed;
+	double	pX;
+	double	pY;
+	double	dX;
+	double	dY;
+	int		mapX;
+	int		mapY;
+	int		themove;
+	int		happen;
+	int		drawstart;
+	int		drawend;
+	double	wallX;
+	int		x;
+	double	planeX;
+	double	planeY;
+	int		stepX;
+	int		stepY;
+	double	turn;
+	int		side;
+}	t_stru;
 
 typedef struct s_map
 {
@@ -54,9 +115,19 @@ typedef struct s_map
 	int		e;
 	int		f;
 	int		c;
+	void	*win;
+	void	*mlx;
+	t_stru	stru;
+	t_img	*img;
+
+	t_img	*NO;
+	t_img	*SO;
+	t_img	*E;
+	t_img	*W;
 }	t_map;
 
-int		main(int ac, char **av);
+
+int		main();
 
 //Pars :
 void	size_fd(t_map *map, char *av);
@@ -66,7 +137,7 @@ void	check_name_cube(char *av);
 int		tablen(char **tab);
 void	inti_var(t_map *map);
 void	print_char_tab(char **tab);
-void	check_texture(t_map *map);
+void	check_texture(t_map *map, int i);
 void	ft_exit(char *str);
 void	check_colors(t_map *map, int i, int j);
 char	*without_space(char *s);
@@ -89,6 +160,44 @@ void	free_all(t_map *map);
 void	free_tab(char **tab);
 char	*free_strjoins2(char *s1, char *s2);
 char	*free_strjoins1(char *s1, char *s2);
+char	*textmap(char **tab, char a, char b, int i);
 void	rctext(t_map *map);
+
+
+//raycasting
+void	la2d(t_map *map, t_stru *stru);
+void	cpymap(char *av, t_map *map);
+int		countmape(char *av);
+void	raycasting(t_map *map);
+void 	draw_line(t_map *map, int x0, int y0, int x1, int y1, int color);
+int		choose_color(t_img *img, int x, int y);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+int		ft_exit2(t_map *map);
+int		key_press(int keycode, t_map *map);
+int		move(t_map *map);
+void	movefront(t_map *map);
+void	moveback(t_map *map);
+int		key_release(int	keycode, t_map *map);
+void	draw(t_map	*map);
+void	drawsky(t_map *map);
+void	drawground(t_map *map);
+void	moveright(t_map *map);
+void	moveleft(t_map *map);
+void	turnleft(t_map *map);
+void	turnright(t_map *map);
+void	findpos(t_map *map);
+void	findpos2(t_map *map, int i, int j);
+void	findpos3(t_map *map, int i, int j);
+void	initimg(t_map *map);
+void	drawnorth(t_map *map);
+void	drawsouth(t_map *map);
+void	drawest(t_map *map);
+void	drawwest(t_map *map);
+int		create_trgb(int t, int r, int g, int b);
+void	todraw(t_map *map);
+void	dda(t_map *map);
+void	rayinit(t_map *map);
+void	raydist(t_map *map);
+void	initimg2(t_map *map);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   recup_text.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isouaidi <isouaidi@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsafi <bsafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:49:38 by isouaidi          #+#    #+#             */
-/*   Updated: 2024/05/23 20:32:50 by isouaidi         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:27:49 by bsafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,8 @@ bool	count_text(t_map *map)
 		return (false);
 }
 
-void	check_texture(t_map *map)
+void	check_texture(t_map *map, int i)
 {
-	int	i;
 	int	j;
 	int	count;
 
@@ -76,10 +75,8 @@ void	check_texture(t_map *map)
 	if (!(map->text))
 		ft_exit("file");
 	init_map(map);
-	i = 0;
 	j = 0;
 	count = 0;
-	// print_char_tab(map->file);
 	while (map->file[i])
 	{
 		if (is_texture(map->file[i], map) == true)
@@ -95,5 +92,4 @@ void	check_texture(t_map *map)
 	map->text[j] = NULL;
 	if (count_text(map) == false)
 		ft_exit("Error\nCheck your directions");
-	// print_char_tab(map->text);
 }
